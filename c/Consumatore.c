@@ -29,15 +29,14 @@ int main(int argc, char *argv[]){
         //Apro e verifico.
         fd = open(argv[2+i], O_RDWR);
 
-        if(fd < 0)
-        {
+        if(fd < 0) {
             perror("Il file non esiste oppure non è nel direttorio corrente, oppure non posso leggere/scrivere.");
             exit(OPEN_ERR);
         }
 
         pid[i] = fork();
 
-        if(pid[i] == 0){
+        if(pid[i] == 0) {
             //Figlio
 
             //Abbiamo già aperto il file da leggere e filtrare: si trova in fd.
@@ -53,8 +52,7 @@ int main(int argc, char *argv[]){
 
             int fdTemp = open(fileTmpName, O_RDWR | O_CREAT | O_TRUNC, 0644);
 
-            if(fdTemp < 0)
-            {
+            if(fdTemp < 0) {
                 perror("Impossibile creare il file temporaneo.");
                 exit(OPEN_ERR);
             }
@@ -97,7 +95,7 @@ int main(int argc, char *argv[]){
             close(fd);
             close(fdTemp);
       
-            //Faccio la move.
+            //Faccio la move (effettivamente ciò che accade non è nient'altro che un rename del file tmp).
             execlp("mv", "mv", fileTmpName, argv[2+i], 0);
 
             perror("Exec fallita");
@@ -110,10 +108,7 @@ int main(int argc, char *argv[]){
 
         //Il padre deve chiudere il file descriptor.
         close(fd);
-
     }
-
-
     //NON Devo aspettare i figli.
     
     return 0;

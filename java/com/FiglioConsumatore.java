@@ -24,6 +24,7 @@ public class FiglioConsumatore implements Runnable {
         this.fileOriginale = fileOriginale;
         this.fileReader = (fileRead);
         this.filtro = filtro;
+        //Commento inutile perchè non mi faceva fare il commit.
     }
 
     @Override

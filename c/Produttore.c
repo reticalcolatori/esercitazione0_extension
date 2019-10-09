@@ -33,8 +33,7 @@ int main(int argc, char *argv[]){
 
     while(gets(riga) != NULL){
         strcat(riga, "\n");
-        char *position_ptr = strchr(riga, ':');
-
+        
         //|
         //1:Toruca\n\0
 

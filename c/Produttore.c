@@ -23,7 +23,6 @@ int main(int argc, char *argv[]){
         exit(INV_ERR);
     }
 
-
     for(int i = 0; i < argc - 1; i++) {
         fd[i] = open(argv[i+1], O_WRONLY | O_CREAT | O_TRUNC, 0640);
         if(fd[i] < 0){

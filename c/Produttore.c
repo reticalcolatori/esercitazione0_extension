@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
 
     int fd[argc-1];
 
-    if(argc == 1){
+    if(argc <= 1){
         perror("Invocazione: produttore fileName1.txt fileName2.txt ... fileNameN.txt");
         exit(INV_ERR);
     }
